@@ -1,3 +1,5 @@
+print("===> YOLO")
+
 """Utilities for patching in cassettes"""
 import contextlib
 import functools
