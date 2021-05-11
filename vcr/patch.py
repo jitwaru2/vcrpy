@@ -27,8 +27,8 @@ def print_tornado_error(e):
     print("===> Exception message: {0}".format(e))
     print("===> Exception stack trace:")
     print(''.join(traceback.format_tb(e.__traceback__)))
-    print("===> sys.modules state:")
-    print(json.dumps([x for x in sys.modules.keys()], indent=1, sort_keys=True))
+    # print("===> sys.modules state:")
+    # print(json.dumps([x for x in sys.modules.keys()], indent=1, sort_keys=True))
     import tornado
     print("===> Module file:")
     print(tornado.__file__)
