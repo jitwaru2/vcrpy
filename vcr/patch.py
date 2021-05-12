@@ -318,7 +318,8 @@ class CassettePatcherBuilder:
             import tornado.curl_httpclient as curl
         except Exception as e:  # pragma: no cover
             print_tornado_error(e)
-            pass
+            if type(e) is AttributeError:
+                raise
         else:
             from .stubs.tornado_stubs import vcr_fetch_impl
 
@@ -514,6 +515,8 @@ def reset_patchers():
         import tornado.curl_httpclient as curl
     except Exception as e:  # pragma: no cover
         print_tornado_error(e)
+        if type(e) is AttributeError:
+            raise
     else:
         yield mock.patch.object(curl.CurlAsyncHTTPClient, "fetch_impl", _CurlAsyncHTTPClient_fetch_impl)
 
